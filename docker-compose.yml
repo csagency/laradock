@@ -59,6 +59,9 @@ services:
       build:
         context: ./workspace
         args:
+          - CS_VERSION_PYTHON=${CS_VERSION_PYTHON}
+          - CS_INSTALL_PYTHON=${CS_INSTALL_PYTHON}
+          - CS_INSTALL_NGROK=${CS_INSTALL_NGROK}
           - CHANGE_SOURCE=${CHANGE_SOURCE}
           - SHELL_OH_MY_ZSH=${SHELL_OH_MY_ZSH}
           - UBUNTU_SOURCE=${UBUNTU_SOURCE}
@@ -181,6 +184,7 @@ services:
       build:
         context: ./php-fpm
         args:
+          - CS_INSTALL_FIREBIRD=${CS_INSTALL_FIREBIRD}
           - CHANGE_SOURCE=${CHANGE_SOURCE}
           - BASE_IMAGE_TAG_PREFIX=${PHP_FPM_BASE_IMAGE_TAG_PREFIX}
           - LARADOCK_PHP_VERSION=${PHP_VERSION}

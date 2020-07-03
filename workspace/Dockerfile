@@ -1344,6 +1344,33 @@ RUN if [ ${INSTALL_XMLRPC} = true ]; then \
 ;fi
 
 ###########################################################################
+# Install Ngrok2
+###########################################################################
+
+ARG CS_INSTALL_NGROK=false
+
+RUN if [ ${CS_INSTALL_NGROK} = true ]; then \
+   curl -s -O https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip \
+   && unzip ngrok-stable-linux-amd64.zip \
+   && mv ngrok /usr/local/bin/ \
+   && rm -f ngrok-stable-linux-amd64.zip \
+;fi
+
+###########################################################################
+# Install Python lastest
+###########################################################################
+
+ARG CS_INSTALL_PYTHON=false
+ARG CS_VERSION_PYTHON=3.7
+
+RUN if [ ${CS_INSTALL_PYTHON} = true ]; then \
+   add-apt-repository ppa:deadsnakes/ppa \
+   && apt-get update \
+   && apt-get -y install python${CS_VERSION_PYTHON} \
+   && apt-get -y install python${CS_VERSION_PYTHON}-venv python${CS_VERSION_PYTHON}-dev \
+;fi
+
+###########################################################################
 # Check PHP version:
 ###########################################################################
 

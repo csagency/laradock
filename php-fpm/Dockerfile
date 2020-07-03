@@ -917,6 +917,18 @@ RUN if [ ${INSTALL_XMLRPC} = true ]; then \
 ;fi
 
 ###########################################################################
+# PDO Firebird:
+###########################################################################
+
+ARG CS_INSTALL_FIREBIRD=false
+
+RUN if [ ${CS_INSTALL_FIREBIRD} = true ]; then \
+    apt-get install -y firebird-dev && \
+    docker-php-ext-install pdo_firebird && \
+    docker-php-ext-enable pdo_firebird \
+;fi
+
+###########################################################################
 # Check PHP version:
 ###########################################################################
 
