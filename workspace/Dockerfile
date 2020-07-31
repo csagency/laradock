@@ -1370,8 +1370,10 @@ RUN if [ ${CS_INSTALL_PYTHON} = true ]; then \
    && apt-get -y install python${CS_VERSION_PYTHON}-venv \
    && apt-get -y install python${CS_VERSION_PYTHON}-dev \
    && apt-get -y install python${CS_VERSION_PYTHON}-distutils \
-   && apt-get -y install python3-pip \
    && update-alternatives --install /usr/bin/python python /usr/bin/python${CS_VERSION_PYTHON} 1 \
+   && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
+   && python get-pip.py \
+   && rm -f get-pip.py \
 ;fi
 
 ###########################################################################
